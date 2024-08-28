@@ -12,12 +12,18 @@
 }
 
 .todo-app {
-    width: 100%;
-    max-width: 540px;
-    background: white;
-    margin: 100px auto 20px;
-    padding: 40px 30px 70px;
-    border-radius: 10px;
+    width: auto; /* Allow the width to adjust based on content */
+    height: auto; /* Allow the height to adjust based on content */
+    max-width: 600px; /* Optional: set a max width */
+    padding: 10px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    overflow: hidden; /* Ensures no scrollbars appear */
+    transition: width 0.3s ease, height 0.3s ease; /* Smooth resizing */
+    transform: translateY(-20px); /* Start above */
 }
 
 .todo-app h2 {
@@ -29,12 +35,15 @@
 
 .row {
     display: flex;
+    font-size: clamp(4px, 2vw, 24px);
+    font-size: 2vw; /* Font size is 2% of the viewport width */
     align-items: center;
     justify-content: space-between;
     background: #edeef0;
     padding-left: 20px;
     margin-bottom: 25px;
     border-radius: 30px;
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
 }
 
 input {
@@ -46,15 +55,39 @@ input {
     font-weight: 14px;
 }
 
+.fade-out {
+    opacity: 0; /* Fade out effect */
+    transform: scale(0.35); /* Optional: shrink slightly for effect */
+}
+
+.row.added {
+    opacity: 1;
+    transform: translateY(0); /* Move to the final position */
+}
+
 button {
-    border: none;
-    outline: none;
-    padding: 15px 50px;
-    background: lightgreen;
-    color: #002765;
-    font-size: 15px;
-    border-radius: 30px;
-    font-weight: 600;
+    width: auto; /* Allow width to adjust based on content */
+    height: auto; /* Allow height to adjust based on content */
+    max-width: 300px;
+    padding: 10px 20px; /* Dynamic padding to make buttons responsive */
+    margin: 5px; /* Space between buttons */
+    font-size: clamp(4px, 2vw, 24px);
+    border-radius: 30px; /* Rounded corners */
+    border: none; /* Remove default border */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    /* display: flex; */
+    flex-wrap: wrap; /* Allow buttons to wrap if necessary */
+    justify-content: space-between; /* Distribute space evenly */
+    gap: 10px; /* Add dynamic space between buttons */
+    margin-top: 10px; /* Space between content and buttons */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
 }
 
 ul li {
@@ -66,7 +99,7 @@ ul li {
     position: relative;
 }
 
-ul li::before {
+/* ul li::before {
     content: '';
     position: absolute;
     height: 28px;
@@ -76,16 +109,16 @@ ul li::before {
     background-size: cover;
     top: 8px;
     left: 8px;
-}
+} */
 
-ul li.checked {
+/* ul li.checked {
     color: #555;
     text-decoration: line-through;
 }
 
 ul li.checked:before {
     background-image: url(images/checkbox-circle-line.svg);
-}
+} */
 
 ul li span {
     position: absolute;
