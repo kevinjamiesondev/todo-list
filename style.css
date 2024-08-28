@@ -34,6 +34,8 @@
 
 .row {
     display: flex;
+    font-size: clamp(10px, 2vw, 24px);
+    font-size: 2vw; /* Font size is 2% of the viewport width */
     align-items: center;
     justify-content: space-between;
     background: #edeef0;
@@ -52,14 +54,28 @@ input {
 }
 
 button {
-    border: none;
-    outline: none;
-    padding: 15px 50px;
-    background: lightgreen;
-    color: #002765;
-    font-size: 15px;
-    border-radius: 30px;
-    font-weight: 600;
+    width: auto; /* Allow width to adjust based on content */
+    height: auto; /* Allow height to adjust based on content */
+    max-width: 300px;
+    padding: 10px 20px; /* Dynamic padding to make buttons responsive */
+    margin: 5px; /* Space between buttons */
+    font-size: 16px;
+    border-radius: 30px; /* Rounded corners */
+    border: none; /* Remove default border */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    /* display: flex; */
+    flex-wrap: wrap; /* Allow buttons to wrap if necessary */
+    justify-content: space-between; /* Distribute space evenly */
+    gap: 10px; /* Add dynamic space between buttons */
+    margin-top: 10px; /* Space between content and buttons */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
 }
 
 ul li {
