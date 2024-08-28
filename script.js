@@ -26,7 +26,6 @@ function addItem(newlistItem) {
         taskCompletionState.style.width = '32px'; // Adjust size as needed
         taskCompletionState.style.height = '32px'; // Adjust size as needed
         taskCompleted.addEventListener("click", function () {
-            li.addEventListener("click", function () {
                 if (taskCompletionState.src.includes(taskUnfinished)) {
                     taskCompletionState.src = taskFinished; // If task was not in a finished state, upon clicking the button, change it to finished
                     taskCompletionState.alt = "Checked Circle"
@@ -35,7 +34,6 @@ function addItem(newlistItem) {
                     taskCompletionState.alt = "Unchecked Circle"
                 }
             });
-        })
         li.textContent = newlistItem;                                   // Set the text content to the new item
 
         li.appendChild(taskCompletionState)
