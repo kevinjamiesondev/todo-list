@@ -10,6 +10,49 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+function display_error() {
+    // Create a container for the GIF
+    let existingGifContainer = document.querySelector('.error-gif-container');
+    if (existingGifContainer) {
+        // If it exists, remove it from the DOM
+        document.body.removeChild(existingGifContainer);
+    }
+    const gifContainer = document.createElement("div");
+    gifContainer.className = 'error-gif-container'; // Add a class for easy reference
+    gifContainer.style.textAlign = "center";
+    gifContainer.style.margin = "20px";
+    gifContainer.style.position = "fixed"; // Make sure it's visible
+    gifContainer.style.top = "50%"; // Center vertically
+    gifContainer.style.left = "50%"; // Center horizontally
+    gifContainer.style.transform = "translate(-50%, -50%)"; // Center the container
+    gifContainer.style.zIndex = "1000"; // Ensure it appears on top
+
+    // Create the GIF element
+    const gifImg = document.createElement("img");
+    gifImg.src = "images/orangu_error_no_input.gif"; // Replace with your GIF URL
+    gifImg.alt = "Error GIF";
+    gifImg.style.maxWidth = "100%";
+    gifImg.style.height = "auto";
+    gifContainer.appendChild(gifImg);
+
+    // Create an error message element
+    const errorMessage = document.createElement("div");
+    errorMessage.style.color = "red";
+    errorMessage.style.textAlign = "center";
+    errorMessage.textContent = "An error occurred!";
+    gifContainer.appendChild(errorMessage);
+
+    // Append the GIF container to the body
+    document.body.appendChild(gifContainer);
+
+    // Hide and remove the GIF container after 2.5 seconds
+    setTimeout(() => {
+        document.body.removeChild(gifContainer);
+    }, 2100);
+}
+
+
+
 const listElement = document.getElementById("myList");
 function addItem(newlistItem) {
     if (typeof newlistItem === 'string' && newlistItem.trim() !== "") {
@@ -80,6 +123,7 @@ function addItem(newlistItem) {
         // });
     } else {
         console.error("Invalid item: must be a non-empty string.");
+        display_error() 
     }
 }
 
