@@ -12,12 +12,17 @@
 }
 
 .todo-app {
-    width: 100%;
-    max-width: 540px;
-    background: white;
-    margin: 100px auto 20px;
-    padding: 40px 30px 70px;
-    border-radius: 10px;
+    width: auto; /* Allow the width to adjust based on content */
+    height: auto; /* Allow the height to adjust based on content */
+    max-width: 600px; /* Optional: set a max width */
+    padding: 10px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    overflow: hidden; /* Ensures no scrollbars appear */
+    transition: width 0.3s ease, height 0.3s ease; /* Smooth resizing */
 }
 
 .todo-app h2 {
