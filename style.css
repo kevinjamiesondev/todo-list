@@ -43,7 +43,7 @@
     padding-left: 20px;
     margin-bottom: 25px;
     border-radius: 30px;
-    transition: opacity 0.5s ease, transform 0.25s ease; /* Smooth transition */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
 }
 
 input {
@@ -57,7 +57,7 @@ input {
 
 .fade-out {
     opacity: 0; /* Fade out effect */
-    transform: scale(0.75); /* Optional: shrink slightly for effect */
+    transform: scale(0.35); /* Optional: shrink slightly for effect */
 }
 
 .row.added {
