@@ -33,7 +33,7 @@ function addItem(newlistItem) {
         });
         // This section is for the "Task completed section"
         const taskCompleted = document.createElement("button"); 
-        taskCompleted.textContent = "Task Completed";
+        taskCompleted.textContent = "Mark Completed"
         taskCompleted.style.background = "lightblue";
         taskCompleted.style.color = "black"
         // deleteButton.style.margin = "20px";                           //Sets the styling/margin
@@ -51,9 +51,15 @@ function addItem(newlistItem) {
                 if (taskCompletionState.src.includes(taskUnfinished)) {
                     taskCompletionState.src = taskFinished; // If task was not in a finished state, upon clicking the button, change it to finished
                     taskCompletionState.alt = "Checked Circle"
+                    taskCompleted.textContent = "Mark Incomplete"
+                    taskCompleted.style.background = "yellow";
+                    textNode.style.textDecoration = "line-through"; // Add strikethrough
                 } else {
                     taskCompletionState.src = taskUnfinished; // If task was marked as finished, then mark it to unfinished when button is pressed
                     taskCompletionState.alt = "Unchecked Circle"
+                    taskCompleted.textContent = "Mark Completed"
+                    taskCompleted.style.background = "lightblue";
+                    textNode.style.textDecoration = "none"; // Add strikethrough
                 }
             });
             // li.textContent = newlistItem;                                   // Set the text content to the new item
