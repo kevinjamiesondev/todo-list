@@ -3,6 +3,7 @@ const listElement = document.getElementById("myList");
 
 function addItem(newlistItem) {
     if (typeof newlistItem === 'string' && newlistItem.trim() !== "") {
+        const textNode = document.createTextNode(newlistItem);
         const li = document.createElement("li");                         // Create a new <li> element
         // This section is for the delete button behavior
         const deleteButton = document.createElement("button");          //Creates a button element in html
@@ -34,9 +35,10 @@ function addItem(newlistItem) {
                     taskCompletionState.alt = "Unchecked Circle"
                 }
             });
-        li.textContent = newlistItem;                                   // Set the text content to the new item
+            // li.textContent = newlistItem;                                   // Set the text content to the new item
 
         li.appendChild(taskCompletionState)
+        li.appendChild(textNode);            // Then the text
         li.appendChild(taskCompleted);
         li.appendChild(deleteButton);
         listElement.appendChild(li); // Append the <li> to the <ul>
