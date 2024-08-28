@@ -23,6 +23,7 @@
     background-color: #f9f9f9;
     overflow: hidden; /* Ensures no scrollbars appear */
     transition: width 0.3s ease, height 0.3s ease; /* Smooth resizing */
+    transform: translateY(-20px); /* Start above */
 }
 
 .todo-app h2 {
@@ -42,6 +43,7 @@
     padding-left: 20px;
     margin-bottom: 25px;
     border-radius: 30px;
+    transition: opacity 0.5s ease, transform 0.25s ease; /* Smooth transition */
 }
 
 input {
@@ -51,6 +53,16 @@ input {
     background: transparent;
     padding: 10px;
     font-weight: 14px;
+}
+
+.fade-out {
+    opacity: 0; /* Fade out effect */
+    transform: scale(0.75); /* Optional: shrink slightly for effect */
+}
+
+.row.added {
+    opacity: 1;
+    transform: translateY(0); /* Move to the final position */
 }
 
 button {

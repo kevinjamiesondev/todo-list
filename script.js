@@ -19,6 +19,7 @@ function addItem(newlistItem) {
         textNode.style.marginRight = "10px"; // Margin around the text
         const li = document.createElement("li");                         // Create a new <li> element
         li.className = 'row'
+        // li.className = 'list-item';
         // This section is for the delete button behavior
         const deleteButton = document.createElement("button");          //Creates a button element in html
         deleteButton.textContent = "Remove Task";                      //Makes the text in html(the id) named Remove Task
@@ -29,7 +30,12 @@ function addItem(newlistItem) {
         // deleteButton.justifyContent = "center"
         //determines what happens when you click on the button itself
         deleteButton.addEventListener("click", function () {
-            listElement.removeChild(li);
+            li.classList.add('fade-out'); // Add fade-out class for animation
+
+            // Wait for the transition to complete before removing the element
+            li.addEventListener('transitionend', function () {
+                listElement.removeChild(li);
+            }, { once: true });
         });
         // This section is for the "Task completed section"
         const taskCompleted = document.createElement("button"); 
@@ -69,6 +75,9 @@ function addItem(newlistItem) {
         li.appendChild(taskCompleted);
         li.appendChild(deleteButton);
         listElement.appendChild(li); // Append the <li> to the <ul>
+        // requestAnimationFrame(() => {
+        //     li.classList.add('added');
+        // });
     } else {
         console.error("Invalid item: must be a non-empty string.");
     }
