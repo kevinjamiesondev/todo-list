@@ -23,7 +23,7 @@ function addItem(newlistItem) {
         const deleteButton = document.createElement("button");          //Creates a button element in html
         deleteButton.textContent = "Remove Task";                      //Makes the text in html(the id) named Remove Task
         deleteButton.style.background = "red"
-        deleteButton.style.margin = "20px";                           //Sets the styling/margin
+        // deleteButton.style.margin = "20px";                           //Sets the styling/margin
         deleteButton.style.justifyContent = "flex-end"
         // deleteButton.style.display = "flex"
         // deleteButton.justifyContent = "center"
@@ -36,7 +36,7 @@ function addItem(newlistItem) {
         taskCompleted.textContent = "Task Completed";
         taskCompleted.style.background = "lightblue";
         taskCompleted.style.color = "black"
-        deleteButton.style.margin = "20px";                           //Sets the styling/margin
+        // deleteButton.style.margin = "20px";                           //Sets the styling/margin
         deleteButton.style.justifyContent = "flex-end"
         // Defines the images for checked and unchecked circles
         const taskUnfinished = "images/checkbox-blank-circle-line.svg"

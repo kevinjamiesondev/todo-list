@@ -34,7 +34,7 @@
 
 .row {
     display: flex;
-    font-size: clamp(10px, 2vw, 24px);
+    font-size: clamp(4px, 2vw, 24px);
     font-size: 2vw; /* Font size is 2% of the viewport width */
     align-items: center;
     justify-content: space-between;
@@ -59,7 +59,7 @@ button {
     max-width: 300px;
     padding: 10px 20px; /* Dynamic padding to make buttons responsive */
     margin: 5px; /* Space between buttons */
-    font-size: 16px;
+    font-size: clamp(4px, 2vw, 24px);
     border-radius: 30px; /* Rounded corners */
     border: none; /* Remove default border */
     background-color: #007bff; /* Button background color */
