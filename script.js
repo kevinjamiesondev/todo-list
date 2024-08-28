@@ -1,6 +1,16 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const inputField = document.getElementById("newTask");
+    const addButton = document.getElementById("addTaskButton");
+
+    // Add event listener for the Enter key
+    inputField.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            addButton.click(); // Simulate a click on the "Add Task" button
+        }
+    });
+});
+
 const listElement = document.getElementById("myList");
-
-
 function addItem(newlistItem) {
     if (typeof newlistItem === 'string' && newlistItem.trim() !== "") {
         const textNode = document.createTextNode(newlistItem);
