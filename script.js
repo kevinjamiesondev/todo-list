@@ -56,21 +56,19 @@ function display_error() {
 const listElement = document.getElementById("myList");
 function addItem(newlistItem) {
     if (typeof newlistItem === 'string' && newlistItem.trim() !== "") {
+
+        //Created a object for the text that the user submits
         const textNode = document.createElement("text");
-        textNode.textContent = newlistItem;
+        textNode.textContent = newlistItem; // newlistItem was passed into this function and is = to the text the user provides
         textNode.style.marginLeft = "10px"; // Margin around the text
         textNode.style.marginRight = "10px"; // Margin around the text
 
 
-        // li.className = 'list-item';
         // This section is for the delete button behavior
         const deleteButton = document.createElement("button");    //Creates a button element in html
         deleteButton.textContent = "Remove Task";                 //Makes the text in html(the id) named Remove Task
         deleteButton.style.background = "red";
-        // deleteButton.style.margin = "20px";                    //Sets the styling/margin
-        deleteButton.style.justifyContent = "flex-end";
-        // deleteButton.style.display = "flex"
-        // deleteButton.justifyContent = "center"
+
 
         //determines what happens when you click on the button itself
         deleteButton.addEventListener("click", function () {
@@ -89,40 +87,37 @@ function addItem(newlistItem) {
         taskCompleted.style.background = "orange";
         taskCompleted.style.color = "white";
         taskCompleted.classList.add("completed-status");
-        // deleteButton.style.margin = "20px";                           //Sets the styling/margin
-        deleteButton.style.justifyContent = "flex-end";
 
         
         // Defines the images for checked and unchecked circles
         const taskUnfinished = "images/checkbox-blank-circle-line.svg"
         const taskFinished = "images/checkbox-circle-line.svg"
+
         // Creates a new li id for the state of task completion
         const taskCompletionState = document.createElement('img')
-        taskCompletionState.src = taskUnfinished
+        taskCompletionState.src = taskUnfinished //this is the image file that's used by default
         taskCompletionState.alt = "Unchecked Circle"
         taskCompletionState.style.width = '32px'; // Adjust size as needed
         taskCompletionState.style.height = '32px'; // Adjust size as needed
        
 
-
-            taskCompletionState.addEventListener("click", function () {
-                if (taskCompletionState.src.includes(taskUnfinished)) {
-                    taskCompletionState.src = taskFinished;
-                    textNode.style.textDecoration = "line-through"; // Add strikethrough
-                    taskCompleted.textContent = "Completed";
-                    taskCompleted.style.background = "lightgreen";
-            }
-                 else {
-                    taskCompletionState.src = taskUnfinished; // If task was marked as finished, then mark it to unfinished when button is pressed
-                    taskCompletionState.alt = "Unchecked Circle"
-                    textNode.style.textDecoration = "none"; // Add strikethrough
-                    taskCompleted.textContent = "Not Done";
-                    taskCompleted.style.background = "orange";
-                 }
+        // the image being clicked will do this function below
+        taskCompletionState.addEventListener("click", function () {
+            if (taskCompletionState.src.includes(taskUnfinished)) {
+                taskCompletionState.src = taskFinished;
+                textNode.style.textDecoration = "line-through"; // Add strikethrough
+                taskCompleted.textContent = "Completed";
+                taskCompleted.style.background = "lightgreen";
+        }
+                else {
+                taskCompletionState.src = taskUnfinished; // If task was marked as finished, then mark it to unfinished when button is pressed
+                taskCompletionState.alt = "Unchecked Circle"
+                textNode.style.textDecoration = "none"; // Add strikethrough
+                taskCompleted.textContent = "Not Done";
+                taskCompleted.style.background = "orange";
                 }
-        )
+        });
 
-            // li.textContent = newlistItem;                                   // Set the text content to the new item
 
 
         // Create a new <li> element
@@ -134,6 +129,8 @@ function addItem(newlistItem) {
         li.appendChild(taskCompleted);
         li.appendChild(deleteButton);
         listElement.appendChild(li); // Append the <li> to the <ul>
+
+        //experimental add animation upon adding item
         // requestAnimationFrame(() => {
         //     li.classList.add('added');
         // });
