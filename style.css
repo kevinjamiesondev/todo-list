@@ -65,6 +65,14 @@ input {
     transform: translateY(0); /* Move to the final position */
 }
 
+.completed-status {
+    border-radius: 0px;
+    max-width: 400px;
+    width: 150px;
+    cursor:initial;
+    transform: none!important;
+}
+
 button {
     width: auto; /* Allow width to adjust based on content */
     height: auto; /* Allow height to adjust based on content */

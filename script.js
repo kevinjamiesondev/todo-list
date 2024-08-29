@@ -48,7 +48,7 @@ function display_error() {
     // Hide and remove the GIF container after 2.5 seconds
     setTimeout(() => {
         document.body.removeChild(gifContainer);
-    }, 2100);
+    }, 7000);
 }
 
 
@@ -60,17 +60,18 @@ function addItem(newlistItem) {
         textNode.textContent = newlistItem;
         textNode.style.marginLeft = "10px"; // Margin around the text
         textNode.style.marginRight = "10px"; // Margin around the text
-        const li = document.createElement("li");                         // Create a new <li> element
-        li.className = 'row'
+
+
         // li.className = 'list-item';
         // This section is for the delete button behavior
-        const deleteButton = document.createElement("button");          //Creates a button element in html
-        deleteButton.textContent = "Remove Task";                      //Makes the text in html(the id) named Remove Task
-        deleteButton.style.background = "red"
-        // deleteButton.style.margin = "20px";                           //Sets the styling/margin
-        deleteButton.style.justifyContent = "flex-end"
+        const deleteButton = document.createElement("button");    //Creates a button element in html
+        deleteButton.textContent = "Remove Task";                 //Makes the text in html(the id) named Remove Task
+        deleteButton.style.background = "red";
+        // deleteButton.style.margin = "20px";                    //Sets the styling/margin
+        deleteButton.style.justifyContent = "flex-end";
         // deleteButton.style.display = "flex"
         // deleteButton.justifyContent = "center"
+
         //determines what happens when you click on the button itself
         deleteButton.addEventListener("click", function () {
             li.classList.add('fade-out'); // Add fade-out class for animation
@@ -80,13 +81,18 @@ function addItem(newlistItem) {
                 listElement.removeChild(li);
             }, { once: true });
         });
+
+
         // This section is for the "Task completed section"
         const taskCompleted = document.createElement("button"); 
-        taskCompleted.textContent = "Mark Completed"
-        taskCompleted.style.background = "lightblue";
-        taskCompleted.style.color = "black"
+        taskCompleted.textContent = "Not Done";
+        taskCompleted.style.background = "orange";
+        taskCompleted.style.color = "white";
+        taskCompleted.classList.add("completed-status");
         // deleteButton.style.margin = "20px";                           //Sets the styling/margin
-        deleteButton.style.justifyContent = "flex-end"
+        deleteButton.style.justifyContent = "flex-end";
+
+        
         // Defines the images for checked and unchecked circles
         const taskUnfinished = "images/checkbox-blank-circle-line.svg"
         const taskFinished = "images/checkbox-circle-line.svg"
@@ -96,22 +102,32 @@ function addItem(newlistItem) {
         taskCompletionState.alt = "Unchecked Circle"
         taskCompletionState.style.width = '32px'; // Adjust size as needed
         taskCompletionState.style.height = '32px'; // Adjust size as needed
-        taskCompleted.addEventListener("click", function () {
+       
+
+
+            taskCompletionState.addEventListener("click", function () {
                 if (taskCompletionState.src.includes(taskUnfinished)) {
-                    taskCompletionState.src = taskFinished; // If task was not in a finished state, upon clicking the button, change it to finished
-                    taskCompletionState.alt = "Checked Circle"
-                    taskCompleted.textContent = "Mark Incomplete"
-                    taskCompleted.style.background = "yellow";
+                    taskCompletionState.src = taskFinished;
                     textNode.style.textDecoration = "line-through"; // Add strikethrough
-                } else {
+                    taskCompleted.textContent = "Completed";
+                    taskCompleted.style.background = "lightgreen";
+            }
+                 else {
                     taskCompletionState.src = taskUnfinished; // If task was marked as finished, then mark it to unfinished when button is pressed
                     taskCompletionState.alt = "Unchecked Circle"
-                    taskCompleted.textContent = "Mark Completed"
-                    taskCompleted.style.background = "lightblue";
                     textNode.style.textDecoration = "none"; // Add strikethrough
+                    taskCompleted.textContent = "Not Done";
+                    taskCompleted.style.background = "orange";
+                 }
                 }
-            });
+        )
+
             // li.textContent = newlistItem;                                   // Set the text content to the new item
+
+
+        // Create a new <li> element
+        const li = document.createElement('li');
+        li.className = "row";
 
         li.appendChild(taskCompletionState)
         li.appendChild(textNode);            // Then the text
@@ -121,6 +137,7 @@ function addItem(newlistItem) {
         // requestAnimationFrame(() => {
         //     li.classList.add('added');
         // });
+
     } else {
         console.error("Invalid item: must be a non-empty string.");
         display_error() 
